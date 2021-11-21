@@ -2,11 +2,13 @@ import React from "react";
 import Routes from "./routes/routes";
 import { View, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
+
 const Index = () => {
   return (
     <>
-      <StatusBar style={"light"} backgroundColor="#072120" />
+      <StatusBar style={"light"} backgroundColor="#87898A" />
       <Routes />
+   
     </>
   );
 };

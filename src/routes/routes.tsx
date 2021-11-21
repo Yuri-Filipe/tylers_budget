@@ -3,26 +3,29 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { Entypo, Feather, Ionicons, FontAwesome } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import Button from '../components/buttonAdd/Index'
+import Button from '../components/button_add/Index'
 
 const Tab = createMaterialBottomTabNavigator();
 
 import Home from "../pages/home/Index";
 import About from "../pages/about/Index";
 import List from "../pages/list/Index";
+import Add from "../pages/add/Index";
 
 function Routes() {
   return (
     <NavigationContainer>
       <Tab.Navigator
         barStyle={{
-          backgroundColor: "#05181C",
+          backgroundColor: "#072120",
           paddingBottom: 10,
           paddingTop: 10,
+          
          
         }}
         screenOptions={{}}
-        activeColor="#00c55c" //53
+        
+        activeColor="#87898A" //53
       >
         <Tab.Screen
           name="HOME"
@@ -39,7 +42,7 @@ function Routes() {
             <Entypo name="list" focused={focused} color={color} size={25}  />
           ),
         }} />
-        <Tab.Screen name="ADD" component={List} 
+        <Tab.Screen name="ADD" component={Add} 
        
          options={{
       

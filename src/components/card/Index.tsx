@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
+import Menu from '../../components/menu/Index'
 interface Types {
   n_Pedido: number;
   name: string;
@@ -25,8 +26,10 @@ const Index: React.FC<Types> = ({
       <View style={styles.topDate}>
         <Text style={{
               fontSize:16,
+              marginLeft:80,
               color:"#F4FAF7"
             }}>{date}</Text>
+            <Menu/>
       </View>
 
       <View style={styles.content}>
@@ -67,7 +70,7 @@ const Index: React.FC<Types> = ({
         <View style={styles.descrition}>
           <View style={styles.lines} />
           <Text style={styles.textDescription}>
-            {qtd > 1 ? `${qtd} litros` : `${qtd} litro`}
+            {qtd > 1 ? `${qtd} liters` : `${qtd} liter`}
           </Text>
           <Text style={styles.textDescription}>{`R$ ${price.toFixed(2)}`}</Text>
           <View style={{...styles.lines,marginTop:4}} />
@@ -84,7 +87,7 @@ const Index: React.FC<Types> = ({
 
 export default Index;
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     display: "flex",
     alignItems: "center",
@@ -109,11 +112,13 @@ const styles = StyleSheet.create({
   },
   topDate: {
     backgroundColor: "#44A773",
-    height: 30,
+    display: "flex",
+    flexDirection:"row",
+    height: 35,
     width: "99%",
     marginTop: 0,
     alignItems: "center",
-    justifyContent: "center",
+
     borderRadius: 5,
   },
   topLine: {
