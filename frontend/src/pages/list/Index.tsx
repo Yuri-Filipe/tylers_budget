@@ -55,7 +55,7 @@ const list = [
   obs: "Arrumar alguns galões de 5 litros",
 },
 {
-  name:"Yuri Felipe Valentim de Almeida",
+  name:"Yuri",
   date:"12 de novembro de 2021",
   hour:"12:25",
   n_Pedido: 32314,
