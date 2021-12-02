@@ -26,7 +26,7 @@ router.post("/send/table_price", async (req, res) => {
       }
     }
     const newHistory = await new schema({
-      value: [new_value],
+      value: new_value,
       last_update: new Date(),
     }).save();
     response = await schema.find();

@@ -28,13 +28,17 @@ const Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  completed:{
+    type: Boolean,
+    required: true,
+  }
 });
 let schema;
 try {
-  schema = mongoose.model("table_recycle");
+  schema = mongoose.model("table_history");
 } catch (error) {
-  schema = mongoose.model("table_recycle", Schema);
+  schema = mongoose.model("table_history", Schema);
 }
 
-mongoose.model("table_recycle", Schema);
+mongoose.model("table_history", Schema);
 export default schema;

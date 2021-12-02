@@ -1,35 +1,60 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
-import Menu from '../../components/menu/Index'
+import { AntDesign } from "@expo/vector-icons";
+import Menu from "../../components/menu/Index";
 interface Types {
-  n_Pedido: number;
   name: string;
   hour: string;
   date: string;
   price: number;
   qtd: number;
   obs: string;
+  type_card: "orders" | "history";
+  n_pedido: number;
+  completed: true | false;
 }
 
 const Index: React.FC<Types> = ({
-  n_Pedido,
+  n_pedido,
   name,
   hour,
   date,
   price,
   qtd,
   obs,
+  type_card,
+  completed,
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, opacity: completed ? 0.5 : 1 }}>
       <View style={styles.topDate}>
-        <Text style={{
-              fontSize:16,
-              marginLeft:80,
-              color:"#F4FAF7"
-            }}>{date}</Text>
-            <Menu/>
+        <Text
+          style={{
+            fontSize: 16,
+            marginLeft: 80,
+            color: "#F4FAF7",
+          }}
+        >
+          {date}
+        </Text>
+        {!completed ? (
+          <Menu
+            completed={completed}
+            type_card={type_card}
+            n_pedido={n_pedido}
+          />
+        ) : (
+          <AntDesign
+            style={{
+              position: "relative",
+
+              marginLeft: 83,
+            }}
+            name="checkcircle"
+            size={20}
+            color="#fff"
+          />
+        )}
       </View>
 
       <View style={styles.content}>
@@ -37,31 +62,36 @@ const Index: React.FC<Types> = ({
           <Text
             style={{
               marginLeft: 10,
-              color: "#E8F4EE"
+              color: "#E8F4EE",
             }}
           >
-            {`# ${n_Pedido}`}
+            {`# ${n_pedido}`}
           </Text>
           <Text
             style={{
               marginLeft: 270,
-              color: "#E8F4EE"
+              color: "#E8F4EE",
             }}
           >
             {hour}
           </Text>
         </View>
         <View style={styles.cardPeople}>
-        <AntDesign name="user" size={30} color="#05181C" style = {{
-          marginLeft:6,
-        }} />
+          <AntDesign
+            name="user"
+            size={30}
+            color="#05181C"
+            style={{
+              marginLeft: 6,
+            }}
+          />
 
           <Text
             style={{
               marginLeft: 10,
-              textTransform:"uppercase",
-              fontSize:14,
-              color: "#0A1D20"
+              textTransform: "uppercase",
+              fontSize: 14,
+              color: "#0A1D20",
             }}
           >
             {name}
@@ -73,7 +103,7 @@ const Index: React.FC<Types> = ({
             {qtd > 1 ? `${qtd} liters` : `${qtd} liter`}
           </Text>
           <Text style={styles.textDescription}>{`R$ ${price.toFixed(2)}`}</Text>
-          <View style={{...styles.lines,marginTop:4}} />
+          <View style={{ ...styles.lines, marginTop: 4 }} />
           <Text
             style={{ ...styles.textDescription, marginTop: 10, marginLeft: 10 }}
           >
@@ -93,27 +123,25 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     width: 390,
     height: 242,
-    marginTop:40,
+    marginTop: 40,
     borderRadius: 20,
-   
   },
   text: {},
   cardPeople: {
     backgroundColor: "#62696B",
-    borderRadius:10,
+    borderRadius: 10,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     height: 40,
     width: "91%",
-    marginTop:16,
-    marginLeft:10,
-    
+    marginTop: 16,
+    marginLeft: 10,
   },
   topDate: {
     backgroundColor: "#44A773",
     display: "flex",
-    flexDirection:"row",
+    flexDirection: "row",
     height: 35,
     width: "99%",
     marginTop: 0,
@@ -122,7 +150,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
   },
   topLine: {
-    marginTop:10,
+    marginTop: 10,
     width: "100%",
     display: "flex",
     flexDirection: "row",
@@ -139,8 +167,7 @@ export const styles = StyleSheet.create({
   },
   descrition: {
     height: 150,
-    marginTop:16,
-
+    marginTop: 16,
   },
   lines: {
     width: "90%",

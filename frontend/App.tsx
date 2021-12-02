@@ -13,16 +13,3 @@ export default function App() {
   );
 }
 
-// interface TypeStyle {
-//   view: ViewStyle;
-//   text:ViewStyle
-// }
-
-// const styles: TypeStyle = {
-//   view: {
-//     backgroundColor: "#bc8ae1",
-//   },
-//   text:{
-
-//   }
-// };

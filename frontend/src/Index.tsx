@@ -1,14 +1,17 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Routes from "./routes/routes";
 import { View, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import Start from "./hooks/start/Index";
 
 const Index = () => {
+  Start()
   return (
     <>
-      <StatusBar style={"light"} backgroundColor="#87898A" />
+      
+      <StatusBar style={"dark"} backgroundColor="#8a8887" />
       <Routes />
-   
+      
     </>
   );
 };

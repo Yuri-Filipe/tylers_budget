@@ -28,6 +28,10 @@ const Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  completed:{
+    type: Boolean,
+    required: true,
+  }
 });
 let schema;
 try {

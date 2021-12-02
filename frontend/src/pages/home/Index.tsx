@@ -5,29 +5,29 @@ import { StoreType } from "../../store/ducks/types";
 import Bar_Title from "../../components/bar_title/Index";
 import Dialog from "../../components/dialog/Index";
 import Table from "../../components/table/Index";
-import  Snackbar  from "../../components/snack_bar/Index";
+import Snackbar from "../../components/snack_bar/Index";
 const List: React.FC = () => {
   const dispatch = useDispatch();
   const table_price = useSelector((state: StoreType) => state.table_price);
+  const snack_bar = useSelector((state: StoreType) => state.snack_bar);
 
   return (
-    <ScrollView style={styles.scrollView}>
-      <View style={styles.view}>
+    <ScrollView style={st.scrollView}>
+      <View style={st.view}>
         <Bar_Title text="GENERAL INFORMATION" />
         <Table />
-     
       </View>
-         <Snackbar/>
+      {snack_bar && <Snackbar />}
       <Dialog />
     </ScrollView>
   );
 };
 export default List;
 
-export const styles = StyleSheet.create({
+export const st = StyleSheet.create({
   scrollView: {
     backgroundColor: "#072120",
-    
+    color: "#fff"
   },
   view: {
     backgroundColor: "#072120",

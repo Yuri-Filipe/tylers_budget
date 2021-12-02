@@ -1,131 +1,64 @@
-import React from "react";
-import Card from '../../components/card/Index'
-import { ScrollView, View, Text, StyleSheet } from "react-native";
-import { styles } from "../home/Index";
+import React, { useState, useCallback } from "react";
+import Card from "../../components/card/Index";
+import { ScrollView, View, Text, RefreshControl } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { st } from "../home/Index";
 import Bar_Title from "../../components/bar_title/Index";
-import  Snackbar  from "../../components/snack_bar/Index";
+import Snackbar from "../../components/snack_bar/Index";
+import { StoreType } from "../../store/ducks/types";
+import { table_pedidos, table_history } from "../../store/ducks/params";
+import api from "../../services/api";
+import useRefresh from "../../hooks/useRefresh/Index";
+import { getDate } from "date-fns/esm";
 
 const List: React.FC = () => {
+  const dispatch = useDispatch();
+  const state = useSelector((state: StoreType) => state.table_pedidos);
+  const snack_bar = useSelector((state: StoreType) => state.snack_bar);
+  const [refreshing, setRefreshing, get_data] = useRefresh("orders", false);
   return (
-    <ScrollView style={styles.scrollView}>
-      <View style={styles.view}>
-      <Bar_Title   text = "ORDER LIST"/>
-        {list.map(({ name,
-          date,
-          hour,
-          n_Pedido,
-          price,
-          qtd,
-          obs})=>{
-          return  <Card
-          key= {n_Pedido}
-          name={name}
-          date={date}
-          hour={hour}
-          n_Pedido= {n_Pedido}
-          price= {price}
-          qtd= {qtd}
-          obs= {obs}
-        
-        
-        
-        
-          />
-         
-        })}
-
-
+    <ScrollView
+    fadingEdgeLength = {10}
+      style={st.scrollView}
+      refreshControl={
+        <RefreshControl
+          colors={["#fff"]}
+          style={{
+            backgroundColor: "#fff",
+            marginTop: 20,
+          }}
+          progressBackgroundColor="#8a8887"
+          refreshing={refreshing}
+          onRefresh={() => {
+            setRefreshing(true);
+            get_data();
+          }}
+        />
+      }
+    >
+      <View style={st.view}>
+        <Bar_Title text="ORDER LIST" />
+        {state.map(
+          ({ name, _id, date, hour, n_pedido, price, qtd, obs, completed }) => {
+            return (
+              <Card
+                key={n_pedido}
+                name={name}
+                date={date}
+                hour={hour}
+                n_pedido={n_pedido}
+                price={price}
+                qtd={qtd}
+                obs={obs}
+                type_card="orders"
+                completed={completed}
+              />
+            );
+          }
+        )}
       </View>
-   <Snackbar/>
+      {snack_bar && <Snackbar />}
     </ScrollView>
   );
 };
 export default List;
-
-
-
-const list = [
-{
-  name:"Yuri Felipe Valentim de Almeida",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 328753,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-},
-{
-  name:"Yuri",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 32314,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-},
-{
-  name:"Yuri Felipe Valentim de Almeida",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 321413,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-},
-{
-  name:"Yuri Felipe Valentim de Almeida",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 44323,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-},
-{
-  name:"Yuri Felipe Valentim de Almeida",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 3203,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-},
-{
-  name:"Yuri Felipe Valentim de Almeida",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 32143,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-},
-{
-  name:"Yuri Felipe Valentim de Almeida",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 3423,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-},
-{
-  name:"Yuri Felipe Valentim de Almeida",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 32,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-},
-{
-  name:"Yuri Felipe Valentim de Almeida",
-  date:"12 de novembro de 2021",
-  hour:"12:25",
-  n_Pedido: 23,
-  price: 1680,
-  qtd: 56,
-  obs: "Arrumar alguns galões de 5 litros",
-}
-]
-
-

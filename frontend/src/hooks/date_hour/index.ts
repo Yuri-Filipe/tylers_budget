@@ -2,7 +2,7 @@ import { addHours } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { format } from "date-fns-tz";
 
-function Index(): Array<String> {
+function Index(): Array<string> {
   const d = addHours(new Date(), -3);
 
   const date = format(d, "dd 'de' MMMM 'de' yyyy", {

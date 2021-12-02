@@ -3,13 +3,15 @@ import { Reducer } from "redux";
 
 const initialState: StoreType = {
   server_status: false,
-  table_price: [35, 34, 33, 30],
+  table_price: [0, 0, 0, 0],
   table_pedidos: [],
-  table_recycle: [],
+  table_history: [],
   qtd_litros: 0,
   qtd_pedidos: 0,
   syncing: false,
-  snack_bar:false
+  snack_bar:false,
+  snack_bar_text:"",
+  last_order:0
 };
 
 const Params: Reducer<StoreType> = (state = initialState, action) => {
@@ -28,10 +30,10 @@ const Params: Reducer<StoreType> = (state = initialState, action) => {
         ...state,
         table_pedidos: action.payload,
       };
-    case ActionsType.TABLE_RECYCLE:
+    case ActionsType.TABLE_HISTORY:
       return {
         ...state,
-        table_recycle: action.payload,
+        table_history: action.payload,
       };
     case ActionsType.QTD_LITROS:
       return {
@@ -57,6 +59,16 @@ const Params: Reducer<StoreType> = (state = initialState, action) => {
       return {
         ...state,
         snack_bar: action.payload,
+      };
+      case ActionsType.SNACK_BAR_TEXT:  
+      return {
+        ...state,
+        snack_bar_text: action.payload,
+      };
+      case ActionsType.LAST_ORDER:  
+      return {
+        ...state,
+        last_order: action.payload,
       };
     default:
       return state;

@@ -11,6 +11,7 @@ import Home from "../pages/home/Index";
 import About from "../pages/about/Index";
 import List from "../pages/list/Index";
 import Add from "../pages/add/Index";
+import History from "../pages/history/Index";
 
 function Routes() {
   return (
@@ -51,10 +52,10 @@ function Routes() {
             <Entypo name="plus" focused={focused} color={color} size={25}  />
           ),
         }} />
-        <Tab.Screen name="RECYCLE" component={List} 
+        <Tab.Screen name="HISTORY" component={History} 
          options={{
           tabBarIcon: ({ focused, color }) => (
-            <FontAwesome name="recycle" focused={focused} color={color} size={25}  />
+            <FontAwesome name="history" focused={focused} color={color} size={25}  />
           ),
         }} />
         <Tab.Screen name="About" component={About} 

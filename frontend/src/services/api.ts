@@ -1,3 +1,4 @@
 import axios from 'axios';
-const api = axios.create({baseURL: 'https://budgetapp.tylers.com.br'});
+const api = axios.create({baseURL: 'http://10.0.0.104:3000'});
+// const api = axios.create({baseURL: 'https://budgetapp.tylers.com.br'});
 export default api;

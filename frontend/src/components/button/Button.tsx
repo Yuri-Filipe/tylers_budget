@@ -1,40 +1,39 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { Button } from "react-native-paper";
-import { useDispatch } from "react-redux";
-import { snack_bar } from "../../store/ducks/params";
 
 interface Types {
-  route: any;
-  text: string;
+  route?: any;
+  on_press(): void;
+  text?: string;
+  loading: true | false;
+  disabled:true | false;
 }
 
-const Index: React.FC<Types> = ({ route, text }) => {
-  const dispatch = useDispatch();
-
+const Index: React.FC<Types> = ({ on_press, loading, text,disabled }) => {
   return (
     <Button
-      loading
+      loading={loading}
       style={{
         marginTop: 20,
-        width: "50%",
+        width: "30%",
         display: "flex",
         justifyContent: "space-around",
         alignContent: "space-around",
       }}
+
+      
       contentStyle={{
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "space-evenly",
       }}
       dark
+      disabled = {disabled}
       color="#44A773"
-      icon="adduser"
+      icon="send"
       mode="contained"
-      onPress={() => {
-        dispatch(snack_bar(true));
-      }}
+      onPress={on_press}
     >
-      send
+      {text}
     </Button>
   );
 };

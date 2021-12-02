@@ -1,12 +1,13 @@
 import * as React from "react";
 import { DataTable } from "react-native-paper";
-
+import { useSelector } from "react-redux";
+import { StoreType } from "../../store/ducks/types";
 const optionsPerPage = [2, 3, 4];
 
 const MyComponent = () => {
   const [page, setPage] = React.useState<number>(0);
   const [itemsPerPage, setItemsPerPage] = React.useState(optionsPerPage[0]);
-
+  const qtd_litros   = useSelector((state: StoreType) => state.qtd_litros);
   React.useEffect(() => {
     setPage(0);
   }, [itemsPerPage]);
@@ -29,7 +30,7 @@ const MyComponent = () => {
         }}
       >
         <DataTable.Cell>General queue</DataTable.Cell>
-        <DataTable.Cell numeric>159</DataTable.Cell>
+        <DataTable.Cell numeric>{qtd_litros}</DataTable.Cell>
       </DataTable.Row>
 
       <DataTable.Row
@@ -38,21 +39,11 @@ const MyComponent = () => {
           marginBottom: 25,
         }}
       >
-        <DataTable.Cell>Priority queue</DataTable.Cell>
-        <DataTable.Cell numeric>237</DataTable.Cell>
+        <DataTable.Cell>20 liter gallons</DataTable.Cell>
+        <DataTable.Cell numeric>{Number(qtd_litros / 20).toFixed(2)}</DataTable.Cell>
       </DataTable.Row>
 
-      <DataTable.Pagination
-        page={page}
-        numberOfPages={3}
-        onPageChange={(page) => setPage(page)}
-        label="1-2 of 1"
-        optionsPerPage={optionsPerPage}
-        itemsPerPage={itemsPerPage}
-        setItemsPerPage={setItemsPerPage}
-        showFastPagination
-        optionsLabel={"Rows per page"}
-      />
+     
     </DataTable>
   );
 };

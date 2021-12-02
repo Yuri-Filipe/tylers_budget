@@ -63,7 +63,20 @@ const List: React.FC = () => {
     <ScrollView style={st.scrollView}>
       <View style={st.view}>
         <Bar_Title text="ADD NEW ORDER" />
-        <Card_Input />
+        <Card_Input
+          SetQtd={setQtd}
+          SetObs={setObs}
+          SetClient={setClient}
+          SetDate={setDate}
+          SetPrice={setPrice}
+          value ={ qtd}
+        />
+        <Button
+          on_press={handlePress}
+          loading={loading}
+          text="send"
+          disabled={disabled_button}
+        />
       </View>
       {snack_bar && <Snackbar />}
     </ScrollView>

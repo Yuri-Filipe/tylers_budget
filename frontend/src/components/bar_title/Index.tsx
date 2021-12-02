@@ -27,12 +27,13 @@ export const styles = StyleSheet.create({
     fontSize: 20,
   },
   barTitle: {
+  
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     height: 100,
     width: "100%",
 
-    backgroundColor: "#87898A",
+    backgroundColor: "#8a8887",
   },
 });
