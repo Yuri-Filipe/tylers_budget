@@ -30,7 +30,7 @@ const MyComponent = () => {
         }}
       >
         <DataTable.Cell>General queue</DataTable.Cell>
-        <DataTable.Cell numeric>{qtd_litros}</DataTable.Cell>
+        <DataTable.Cell numeric>{`${qtd_litros} liters`}</DataTable.Cell>
       </DataTable.Row>
 
       <DataTable.Row

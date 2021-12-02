@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "Tylers_Budget_App",
-    "slug": "Tylers_Budget_App",
+    "name": "Budget",
+    "slug": "Budget",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "",
+    "icon": "./src/assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image":"",
+      "image":"./src/assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#4782A4"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,13 +22,12 @@
       "supportsTablet": true
     },
     "android": {
+      
+      "package": "com.tylers.budgetapp",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#4782A4"
       }
-    },
-    "web": {
-      "favicon": ""
     }
   }
 }
