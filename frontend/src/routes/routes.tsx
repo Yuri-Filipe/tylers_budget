@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { Entypo, Feather, Ionicons, FontAwesome } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import Button from '../components/button_add/Index'
+import Button from "../components/button_add/Index";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -21,11 +21,8 @@ function Routes() {
           backgroundColor: "#072120",
           paddingBottom: 10,
           paddingTop: 10,
-          
-         
         }}
         screenOptions={{}}
-        
         activeColor="#87898A" //53
       >
         <Tab.Screen
@@ -33,37 +30,56 @@ function Routes() {
           component={Home}
           options={{
             tabBarIcon: ({ focused, color }) => (
-              <Entypo name="home" focused={focused} color={color} size={25}  />
+              <Entypo name="home" focused={focused} color={color} size={25} />
             ),
           }}
         />
-        <Tab.Screen name="LISTS" component={List} 
-         options={{
-          tabBarIcon: ({ focused, color }) => (
-            <Entypo name="list" focused={focused} color={color} size={25}  />
-          ),
-        }} />
-        <Tab.Screen name="ADD" component={Add} 
-       
-         options={{
-      
-  
-          tabBarIcon: ({ focused, color }) => (
-            <Entypo name="plus" focused={focused} color={color} size={25}  />
-          ),
-        }} />
-        <Tab.Screen name="HISTORY" component={History} 
-         options={{
-          tabBarIcon: ({ focused, color }) => (
-            <FontAwesome name="history" focused={focused} color={color} size={25}  />
-          ),
-        }} />
-        <Tab.Screen name="About" component={About} 
-         options={{
-          tabBarIcon: ({ focused, color }) => (
-            <Ionicons name="information-circle" focused={focused} color={color} size={25}  />
-          ),  
-        }}/>
+        <Tab.Screen
+          name="LISTS"
+          component={List}
+          options={{
+            tabBarIcon: ({ focused, color }) => (
+              <Entypo name="list" focused={focused} color={color} size={25} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="ADD"
+          component={Add}
+          options={{
+            tabBarIcon: ({ focused, color }) => (
+              <Entypo name="plus" focused={focused} color={color} size={25} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="HISTORY"
+          component={History}
+          options={{
+            tabBarIcon: ({ focused, color }) => (
+              <FontAwesome
+                name="history"
+                focused={focused}
+                color={color}
+                size={25}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="About"
+          component={About}
+          options={{
+            tabBarIcon: ({ focused, color }) => (
+              <Ionicons
+                name="information-circle"
+                focused={focused}
+                color={color}
+                size={25}
+              />
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

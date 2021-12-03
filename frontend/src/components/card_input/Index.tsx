@@ -169,9 +169,7 @@ const Index: React.FC<Types> = ({}) => {
                 <TextInput
                   onBlur={onBlur}
                   onChangeText={(data) => {
-                    onChange(data);
-                    console.log(data);
-                    
+                    onChange(data);                 
                     setKey(Math.floor(Math.random() * (50 - 1)) + 1);
                   }}
                   placeholder="CLIENT"

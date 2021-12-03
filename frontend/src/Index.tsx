@@ -9,7 +9,7 @@ const Index = () => {
   return (
     <>
       
-      <StatusBar style={"dark"} backgroundColor="#8a8887" />
+      <StatusBar  backgroundColor="#8a8887" />
       <Routes />
       
     </>

@@ -1,0 +1,12 @@
+version: "3"
+services:
+    app:
+        build: ./src
+        ports: 
+            - "2265:2265"
+        command: yarn start
+
+networks:
+    default:
+        external:
+            name: pi
