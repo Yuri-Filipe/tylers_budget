@@ -1,13 +1,15 @@
 import mongoose from "mongoose";
+import { config } from 'dotenv';
+config()
+
 
 // const url =
 //   "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
-  const url =
-  "mongodb+srv://cluster01.b8yil.mongodb.net/budget_app?retryWrites=true&w=majority"
+const url = process.env.MONGO_URL;
 
-mongoose.connect(url,{
-  user:"admin",
-  pass:"22641127"
+mongoose.connect(url, {
+  user: process.env.MONGO_USERNAME,
+  pass: process.env.MONGO_PASSWORD
 });
 mongoose.Promise = global.Promise;
 
